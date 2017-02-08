@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <!-- auto register Processor -->
+    <context:component-scan
+            base-package="com.zp.web.service"/>
+    <context:annotation-config/>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myShiro"/>
+        <property name="cacheManager" ref="cacheManager"/>
+    </bean>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/jsp/login.jsp"/>
+        <property name="successUrl" value="/jsp/user"/>
+        <property name="unauthorizedUrl" value="/jsp/403"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /static/**=anon
+                /test/**=anon
+                /user=perms[user:query]
+                /user/add=roles[manager]
+                /user/del/**=roles[admin]
+                /user/edit/**=roles[manager]
+                /**=authc
+            </value>
+        </property>
+    </bean>
+
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+</beans>

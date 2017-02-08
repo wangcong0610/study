@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zp.web.mapper.TestPoMapper" >
+  <resultMap id="BaseResultMap" type="com.zp.web.po.TestPo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="PARAMETER_1" property="parameter1" jdbcType="VARCHAR" />
+    <result column="PARAMETER_2" property="parameter2" jdbcType="VARCHAR" />
+    <result column="PARAMETER_3" property="parameter3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, PARAMETER_1, PARAMETER_2, PARAMETER_3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_test
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_test
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zp.web.po.TestPo" >
+    insert into t_test (id, PARAMETER_1, PARAMETER_2, 
+      PARAMETER_3)
+    values (#{id,jdbcType=BIGINT}, #{parameter1,jdbcType=VARCHAR}, #{parameter2,jdbcType=VARCHAR}, 
+      #{parameter3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zp.web.po.TestPo" >
+    insert into t_test
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parameter1 != null" >
+        PARAMETER_1,
+      </if>
+      <if test="parameter2 != null" >
+        PARAMETER_2,
+      </if>
+      <if test="parameter3 != null" >
+        PARAMETER_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="parameter1 != null" >
+        #{parameter1,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter2 != null" >
+        #{parameter2,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter3 != null" >
+        #{parameter3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zp.web.po.TestPo" >
+    update t_test
+    <set >
+      <if test="parameter1 != null" >
+        PARAMETER_1 = #{parameter1,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter2 != null" >
+        PARAMETER_2 = #{parameter2,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter3 != null" >
+        PARAMETER_3 = #{parameter3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zp.web.po.TestPo" >
+    update t_test
+    set PARAMETER_1 = #{parameter1,jdbcType=VARCHAR},
+      PARAMETER_2 = #{parameter2,jdbcType=VARCHAR},
+      PARAMETER_3 = #{parameter3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

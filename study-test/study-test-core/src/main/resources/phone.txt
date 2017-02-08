@@ -1,0 +1,1 @@
+{"addressArray":[{"addrDetail":"韶关乐昌市兴业茗居5栋405号","address":"天津市东丽区韶关乐昌市兴业茗居5栋405号","cityName":"东丽区","email":"55716201@qq.com","provinceName":"天津市"}],"memberId":"164788905","productChannel":"BH10101","productNo":"332161224874062"}

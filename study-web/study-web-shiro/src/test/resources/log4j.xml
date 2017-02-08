@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!--****************************** -->
+	<!-- console define -->
+	<!--****************************** -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\}(%F:%L) - %m%n" />
+		</layout>
+
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+            <param name="LevelMax" value="FATAL" />
+			<!-- <param name="AcceptOnMatch" value="true" />  -->
+		</filter>
+	</appender>
+
+	<!--****************************** -->
+	<!-- log file define -->
+	<!--****************************** -->
+
+	
+
+	<!--****************************** -->
+	<!-- dispatch to the log file -->
+	<!--****************************** -->
+	<!-- [框架Logger] 数据访问层 - Ibatis -->
+	<logger name="com.ibatis" additivity="false">
+		<level value="${maven.sys.log.level}" />
+		<appender-ref ref="CONSOLE" />
+		
+	</logger>
+
+	<!-- [框架Logger] 数据访问层 - SQL -->
+	<logger name="java.sql" additivity="false">
+		<level value="${maven.sys.log.level}" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<!-- [公共Appender] MQ服务信息处理 -->
+	<logger name="com.payment.mq" additivity="false">
+		<level value="${maven.sys.log.level}" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="com.payment.pcs" additivity="false">
+		<level value="${maven.sys.log.level}" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<!-- 定时器日志 -->
+	<logger name="quartz" additivity="false">
+		<level value="${maven.sys.log.level}" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="net.rubyeye.xmemcached" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="com.google.code.yanf4j" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<!--****************************** -->
+	<!-- the root set -->
+	<!--****************************** -->
+	<root>
+		<level value="${maven.sys.log.level}" />
+		<appender-ref ref="CONSOLE" />
+		
+	</root>
+
+</log4j:configuration>
