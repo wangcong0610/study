@@ -20,7 +20,6 @@ public class JavassistAopDemo {
 //        try {
 //            cl.run("jsvassist.JavassistAopDemo$MyTranslator", null);
 //        } catch (Throwable e) {
-//            // TODO Auto-generated catch block
 //            e.printStackTrace();
 //        }
         CtClass cc = cp.get("model.Business");

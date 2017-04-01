@@ -48,6 +48,21 @@
             <version>2.8.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/javassist/javassist -->
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mybatis</groupId>
+            <artifactId>mybatis_plus</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/mybatis_plus.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
     <build>

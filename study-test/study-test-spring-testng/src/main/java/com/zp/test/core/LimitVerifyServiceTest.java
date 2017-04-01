@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 /**
  * Author: Zhang Peng
  * Date: 2017/3/9 0009
- * Description: TODO please add description.
+ * Description: 限额接口单元测试类
  */
 @ContextConfiguration({"/context/applicationContext.xml"})
 public class LimitVerifyServiceTest extends AbstractTestNGSpringContextTests {
