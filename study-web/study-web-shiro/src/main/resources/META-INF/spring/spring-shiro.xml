@@ -26,6 +26,7 @@
             <value>
                 /static/**=anon
                 /test/**=anon
+                /login=anon
                 /user=perms[user:query]
                 /user/add=roles[manager]
                 /user/del/**=roles[admin]

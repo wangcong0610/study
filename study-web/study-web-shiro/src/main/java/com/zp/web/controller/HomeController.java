@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created by Zhang Peng on 2016/9/26.
  */
@@ -31,32 +35,42 @@ public class HomeController {
     private TestPoMapper testDAO;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginForm(Model model) {
+    public String loginForm(Model model, HttpServletRequest request) {
         logger.info("come in loginForm");
         model.addAttribute("user", new User());
+        model.addAttribute("message", "message 123456789");
+        Map<String, String[]> map = request.getParameterMap();
+        for (String key : map.keySet()) {
+            String[] values = (String[]) map.get(key);
+            model.addAttribute(key, values[0]);
+        }
+        model.addAttribute("errMessage", "addAttribute errMessage");
         logger.info("loginForm");
         return "/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@ModelAttribute("user")User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String login(@ModelAttribute("user") User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         logger.info("come in login");
+        if (user.getUserName().equals("2")) {
+            return "redirect:/login";
+        }
         try {
             if (bindingResult.hasErrors()) {
                 logger.info("bindingResult.hasErrors()");
                 return "/login";
             }
             User user_db = userDAO.selectByName(user.getUserName());
-            if(user_db != null && user_db.getPwd().equals(user.getPwd())){
+            if (user_db != null && user_db.getPwd().equals(user.getPwd())) {
                 SecurityUtils.getSubject().login(new UsernamePasswordToken(user.getUserName(), user.getPwd()));
                 logger.info("登录成功！");
                 return "/user";
             }
-            redirectAttributes.addAttribute("message", "用户名或者密码错误！");
+            redirectAttributes.addAttribute("errMessage", "用户名或者密码错误！");
             logger.info("登录失败！");
             return "redirect:/login";
         } catch (AuthenticationException e) {
-            redirectAttributes.addAttribute("message", "用户名或者密码错误！");
+            redirectAttributes.addAttribute("errMessage", "用户名或者密码错误！");
             logger.info("用户名或者密码错误！");
             return "redirect:/login";
         }
@@ -70,7 +84,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/test")
-    public String test(RedirectAttributes redirectAttribute){
+    public String test(RedirectAttributes redirectAttribute) {
         TestPo testPo = new TestPo();
         testPo.setParameter1("${parameter1}");
         testPo.setParameter2("${parameter2}");
@@ -80,7 +94,7 @@ public class HomeController {
     }
 
     @RequestMapping("/403")
-    public String unauthorizedRole(){
+    public String unauthorizedRole() {
         return "/403";
     }
 
