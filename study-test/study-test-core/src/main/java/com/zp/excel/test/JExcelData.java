@@ -109,7 +109,7 @@ public class JExcelData {
         InputStream inputStream = null;
 
         int emailSheetNo = 0;
-        int productNoColumn = 0;
+        int productNoColumn = 1;
         int newEmailColumn = 5;
         int newProductNoColumn = 6;
         try {
@@ -129,12 +129,12 @@ public class JExcelData {
             //获取Sheet表中所包含的总行数
             int rsRows = readSheet.getRows();
             //获取指定单元格的对象引用
-            for (int i = 3000; i < rsRows; i++) {
+            for (int i = 1; i < rsRows; i++) {
                 String productNo = readSheet.getCell(productNoColumn, i).getContents();
-                JSONObject addressJson = getAddressJson("/allData.txt", productNo);
+                JSONObject addressJson = getAddressJson("/email_20170621.txt", productNo);
                 if (addressJson == null) {
 //                    System.out.println("查询失败 " + productNo);
-                    System.out.println(i + " 失败");
+                    System.out.println(i + " 失败 " + productNo);
                 } else {
                     String email = getEmail(addressJson);
                     // 新邮箱地址是在第6列

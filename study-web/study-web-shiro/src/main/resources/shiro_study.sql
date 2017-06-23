@@ -87,3 +87,11 @@ INSERT INTO `t_user_role` VALUES ('1', '3');
 INSERT INTO `t_user_role` VALUES ('2', '2');
 INSERT INTO `t_user_role` VALUES ('2', '3');
 INSERT INTO `t_user_role` VALUES ('3', '3');
+
+CREATE TABLE `t_test` (
+  `ID` bigint(16) unsigned NOT NULL AUTO_INCREMENT,
+  `PARAMETER_1` varchar(32) DEFAULT NULL,
+  `PARAMETER_2` varchar(32) DEFAULT NULL,
+  `PARAMETER_3` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

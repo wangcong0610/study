@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -84,13 +85,14 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/test")
+    @ResponseBody
     public String test(RedirectAttributes redirectAttribute) {
         TestPo testPo = new TestPo();
         testPo.setParameter1("${parameter1}");
         testPo.setParameter2("${parameter2}");
         testPo.setParameter3("${parameter3}");
         testDAO.insert(testPo);
-        return "";
+        return "OK";
     }
 
     @RequestMapping("/403")
