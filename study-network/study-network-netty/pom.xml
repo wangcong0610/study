@@ -2,19 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>com.zp.study</groupId>
+        <artifactId>study-network</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>study-network</groupId>
     <artifactId>study-network-netty</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
 
-        <!-- https://mvnrepository.com/artifact/io.netty/netty-transport -->
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.0.23.Final</version>
+            <version>4.1.14.Final</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
