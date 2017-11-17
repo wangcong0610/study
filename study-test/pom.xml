@@ -16,6 +16,7 @@
     <modules>
         <module>study-test-core</module>
         <module>study-test-spring-testng</module>
+        <module>study-test-mockito</module>
     </modules>
 
 </project>
