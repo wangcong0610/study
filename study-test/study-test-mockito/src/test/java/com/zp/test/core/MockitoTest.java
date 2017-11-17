@@ -22,13 +22,13 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 public class MockitoTest extends AbstractTestNGSpringContextTests {
 
     /**
-     * @InjectMocks 全部替换
+     * "@InjectMocks" 全部替换
      */
     @InjectMocks
     @Autowired
     private ServiceA serviceA;
     /**
-     * @Spy + @Autowired 指定mock的方法将会被替换
+     * "@Spy" + "@Autowired" 指定mock的方法将会被替换
      */
     @Spy
     @InjectMocks
