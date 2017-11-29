@@ -15,6 +15,7 @@
         <jdk.version>1.7</jdk.version>
         <!-- framework -->
         <springframework.version>4.3.12.RELEASE</springframework.version>
+        <springframework.security.version>4.2.3.RELEASE</springframework.security.version>
         <spring.mock.version>2.0.8</spring.mock.version>
         <spring.test.version>4.3.12.RELEASE</spring.test.version>
         <testng.version>6.8.21</testng.version>
@@ -34,6 +35,7 @@
         <module>study-test</module>
         <module>study-tools</module>
         <module>study-web</module>
+        <module>study-doc</module>
     </modules>
 
     <dependencyManagement>
@@ -95,6 +97,27 @@
                 <version>${springframework.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${springframework.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${springframework.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${springframework.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-acl</artifactId>
+                <version>${springframework.security.version}</version>
+            </dependency>
+
             <!-- for testing -->
             <dependency>
                 <groupId>junit</groupId>
@@ -112,7 +135,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.test.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.testng</groupId>
