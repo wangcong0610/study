@@ -14,6 +14,7 @@
     <properties>
         <jdk.version>1.7</jdk.version>
         <!-- framework -->
+        <cxf.version>3.2.1.RELEASE</cxf.version>
         <springframework.version>4.3.12.RELEASE</springframework.version>
         <springframework.security.version>4.2.3.RELEASE</springframework.security.version>
         <spring.mock.version>2.0.8</spring.mock.version>
@@ -40,6 +41,17 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--cxf-->
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
             <!-- spring Framework -->
             <dependency>
                 <groupId>org.springframework</groupId>
