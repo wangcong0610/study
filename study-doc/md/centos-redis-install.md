@@ -30,7 +30,7 @@ make distclean
 make MALLOC=libc
 ```
 #### 3.编译安装
-* 可手动拷贝src目录下redis-server、redis-cli、redis-check-aof、redis-check-dump等至/usr/local/bin目录下，也可执行make install，此处执行make install
+* 可手动拷贝src目录下redis-server、redis-cli、redis-check-aof、redis-check-dump等至/usr/local/bin目录下，也可执行make install。此处执行make install<br/>
 ![make install](../img/002.png)<br/>
 ![usr local bin file](../img/003.png)<br/>
 * 执行redis-server –v，可查看版本
